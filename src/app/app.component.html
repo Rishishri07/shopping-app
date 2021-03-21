@@ -1,9 +1,24 @@
-<app-header></app-header>
+<!--<div class="container">-->
+<!--  <app-cockpit (serverCreated)="onServerAdded($event)"-->
+<!--        (blueprintCreated)="onBlueprintAdded($event)"-->
+<!--  ></app-cockpit>-->
+<!--  <hr>-->
+<!--  <div class="row">-->
+<!--    <div class="col-xs-12">-->
+<!--      <app-server-element *ngFor="let serverElement of serverElements"-->
+<!--      [serverElem]= "serverElement">-->
+<!--        <p #contentPara>-->
+<!--          <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>-->
+<!--          <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>-->
+<!--        </p>-->
+<!--      </app-server-element>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <app-recipes></app-recipes>
-      <app-shopping-list></app-shopping-list>
-    </div>
+  <app-game-control (startGameEvent)="startGame($event)"></app-game-control>
+  <div class="row" *ngFor="let count of gameCount">
+    <app-odd [oddNumber] = "count" *ngIf="count % 2 !== 0"></app-odd>
+    <app-even [evenNumber] = "count" *ngIf="count % 2 === 0"></app-even>
   </div>
 </div>
