@@ -1,15 +1,18 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AccountService} from './account.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'training-angular-app';
-  loadedFeature = 'recipe';
+export class AppComponent implements OnInit {
+  accounts: {name: string, status: string}[] = [];
 
-  onNavigate(event: string): void {
-    this.loadedFeature = event;
+  constructor(private accountService: AccountService) { }
+
+  ngOnInit(): void {
+    this.accounts = this.accountService.accounts;
   }
+
 }
